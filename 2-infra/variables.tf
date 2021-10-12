@@ -15,3 +15,9 @@ variable "terraform_sa" {
   description = "Terraform Service Account"
   default     = "terraform-deployer@slask-project-42.iam.gserviceaccount.com"
 }
+
+variable "prefix" {
+  type        = string
+  description = "Unique-ish prefix for resources"
+  default     = "demo-42"
+}
