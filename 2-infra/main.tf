@@ -22,8 +22,8 @@ resource "google_service_account" "helloworld_sa" {
 # Grant IAM role for the Terraform SA to be able to deploy the function
 resource "google_service_account_iam_member" "tf_deployer_sa_perms" {
   service_account_id = google_service_account.helloworld_sa.name
-  role     = "roles/iam.serviceAccountUser"
-  member   = "serviceAccount:${var.terraform_sa}"
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${var.terraform_sa}"
 }
 
 # Hello world demo app
