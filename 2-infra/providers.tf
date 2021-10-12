@@ -7,6 +7,6 @@ terraform {
 }
 
 provider "google" {
-  project     = "slask-project-42"
+  project      = var.project_id
   access_token = var.gcp_access_token
 }

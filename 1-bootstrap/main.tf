@@ -12,7 +12,7 @@ resource "google_service_account" "terraform_sa" {
 
 resource "google_storage_bucket" "terraform_state" {
   project                     = var.project_id
-  name                        = "demo-terraform-state-42"
+  name                        = var.tf_state_bucket
   location                    = "EU"
   force_destroy               = false
   uniform_bucket_level_access = true

@@ -9,9 +9,3 @@ variable "project_id" {
   description = "Project ID"
   default     = "slask-project-42"
 }
-
-variable "tf_state_bucket" {
-  type        = string
-  description = "Terraform state bucket"
-  default     = "demo-terraform-state-42"
-}
