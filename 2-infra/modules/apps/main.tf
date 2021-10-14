@@ -1,6 +1,6 @@
-# Source code for Hello world demo app
+# Source code for app
 resource "google_storage_bucket_object" "app_source" {
-  name   = "index.zip"
+  name   = "${var.prefix}-${var.name}-source.zip"
   bucket = var.bucket
   source = var.source_zip
 }
@@ -29,7 +29,7 @@ resource "google_cloudfunctions_function" "cloud_function" {
 
   available_memory_mb   = 128
   source_archive_bucket = var.bucket
-  source_archive_object = google_storage_bucket_object.app_source.name
+  source_archive_object = google_storage_bucket_object.app_source.output_name
   trigger_http          = true
   entry_point           = var.entry_point
 
@@ -40,7 +40,7 @@ resource "google_cloudfunctions_function" "cloud_function" {
   ]
 }
 
-# Enable Hello world demo app to be invoked by anyone (i.e. without authentication)
+# Enable app to be invoked by anyone (i.e. without authentication)
 resource "google_cloudfunctions_function_iam_member" "anonymousInvoker" {
   project        = google_cloudfunctions_function.cloud_function.project
   region         = google_cloudfunctions_function.cloud_function.region
